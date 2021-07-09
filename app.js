@@ -2,38 +2,42 @@
 
 
 let drawing = false;
-let x = 0;
-let y = 0;
-
 
 const canvas = document.getElementById("jsCanvas");
+const ctx = canvas.getContext("2d");
+
+
+ctx.strokeStyle= "#000000";
+ctx.lineWidth= 2.5;
+
+console.log(canvas.width, canvas.height);
+
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
 
 
 
-if(canvas){
     canvas.addEventListener('mousemove', (e) => {
         const x = e.offsetX;
         const y = e.offsetY;
-        drawing = true;
+        if(!drawing){
+            ctx.beginPath(); // call start creat new path 
+            ctx.moveTo(x,y); // start of coordinates좌표를따라 point create  = making path
+        } else {
+            ctx.lineTo(x,y); // 선 끝 좌표  end of line coordinates.
+            ctx.stroke(); // 선을 그린다.
+        }
     }),
 
     canvas.addEventListener('mousedown', (e) => {
         drawing = true;
-        const x = e.offsetX;
-        const y = e.offsetY;
     }),
 
     canvas.addEventListener('mouseup', (e) =>{
-        if(drawing === true){
-            drawing = false;
-            x = 0;
-            y = 0;
-        }
+        drawing = false;
     }),
 
     canvas.addEventListener('mouseleave', (e) => {
         drawing = false;
     })
-}
-
 
