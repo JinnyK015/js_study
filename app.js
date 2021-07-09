@@ -2,6 +2,7 @@
 const canvas = document.getElementById("jsCanvas");
 const colors = document.querySelectorAll(".jsColor");
 const size = document.getElementById("jsRange");
+const mode = document.getElementById("jsMode");
 const ctx = canvas.getContext("2d");
 
 // we need to bring canvas's size( couldn't read from css)
@@ -12,6 +13,7 @@ canvas.height = canvas.offsetHeight;
 ctx.strokeStyle= "#000000";
 ctx.lineWidth= 3;
 let drawing = false;
+let filling = false;
 
 canvas.addEventListener('mousemove', (e) => {
     const x = e.offsetX;
@@ -37,15 +39,31 @@ canvas.addEventListener('mouseleave', (e) => {
     drawing = false;
 }) 
 
-
+// color chagne function
 Array.from(colors).forEach(color => color.addEventListener('click', (e) =>{
     const color = e.target.style.backgroundColor;
     ctx.strokeStyle= color;
 }));
 
+// Brush size function
 if(size){
     size.addEventListener("input", (e) =>{
         const size = e.target.value;
         ctx.lineWidth= size;
+    })
+}
+
+//button change fucntion
+
+if(mode){
+    mode.addEventListener("click", (e) =>{
+        if(filling === true){
+            filling = false;
+            mode.innerHTML ='<i class="fas fa-fill-drip" active></i> Fill';
+        } else{
+            filling = true;
+            mode.innerHTML ='<i class="fas fa-pencil-alt"></i> Draw';
+        }
+        
     })
 }
