@@ -10,10 +10,17 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 //basic color and weight of line (when you first painting)
-ctx.strokeStyle= "#000000";
+const BASE_COLOR = "#000000";
+ctx.strokeStyle= BASE_COLOR;
 ctx.lineWidth= 3;
+ctx.fillStyle= BASE_COLOR;
+
 let drawing = false;
 let filling = false;
+
+let x =0;
+let y =0;
+
 
 canvas.addEventListener('mousemove', (e) => {
     const x = e.offsetX;
@@ -39,10 +46,18 @@ canvas.addEventListener('mouseleave', (e) => {
     drawing = false;
 }) 
 
+canvas.addEventListener('click', (e)=>{
+    if(filling === true){
+        drawing = false;
+        ctx.fillRect(x,y, canvas.width, canvas.height);
+    }
+})
+
 // color chagne function
 Array.from(colors).forEach(color => color.addEventListener('click', (e) =>{
     const color = e.target.style.backgroundColor;
     ctx.strokeStyle= color;
+    ctx.fillStyle = color;
 }));
 
 // Brush size function
@@ -60,10 +75,15 @@ if(mode){
         if(filling === true){
             filling = false;
             mode.innerHTML ='<i class="fas fa-fill-drip" active></i> Fill';
+            
         } else{
             filling = true;
             mode.innerHTML ='<i class="fas fa-pencil-alt"></i> Draw';
+           
         }
         
     })
 }
+
+
+
