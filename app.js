@@ -4,6 +4,7 @@ const colors = document.querySelectorAll(".jsColor");
 const size = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const save = document.getElementById("jsSave");
+const yourColor = document.getElementById("jsYourColor");
 const ctx = canvas.getContext("2d");
 
 // save file as a img (png)
@@ -80,6 +81,13 @@ Array.from(colors).forEach(color => color.addEventListener('click', (e) =>{
     ctx.strokeStyle= color;
     ctx.fillStyle = color;
 }));
+// choiced Color function
+yourColor.addEventListener("input", (e) =>{
+    const yourcolor = e.target.value;
+    ctx.strokeStyle= yourcolor;
+    ctx.fillStyle = yourcolor;
+})
+
 
 // Brush size function
 if(size){
