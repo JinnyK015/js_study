@@ -3,7 +3,21 @@ const canvas = document.getElementById("jsCanvas");
 const colors = document.querySelectorAll(".jsColor");
 const size = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+const save = document.getElementById("jsSave");
 const ctx = canvas.getContext("2d");
+
+// save file as a img (png)
+save.addEventListener("click", (e) =>{
+    const imgURL = canvas.toDataURL();
+    const imgLink = document.createElement("a");
+    imgLink.href = imgURL;
+    //for cute and little fun
+    const emoj = ['😎','😍','😂','😑','😊','😘','🤣','❤','🎖','🏆','🥰','🤩'];
+    let cute = emoj[Math.floor(Math.random()*emoj.length)];
+    imgLink.download = `MyPaint${cute}`;
+    imgLink.click();
+})
+
 
 // we need to bring canvas's size( couldn't read from css)
 canvas.width = canvas.offsetWidth;
@@ -15,13 +29,14 @@ ctx.strokeStyle= BASE_COLOR;
 ctx.lineWidth= 3;
 ctx.fillStyle= BASE_COLOR;
 
+
 let drawing = false;
 let filling = false;
 
 let x =0;
 let y =0;
 
-
+//drawing method
 canvas.addEventListener('mousemove', (e) => {
     const x = e.offsetX;
     const y = e.offsetY;
@@ -46,6 +61,12 @@ canvas.addEventListener('mouseleave', (e) => {
     drawing = false;
 }) 
 
+// lock contextmenu
+canvas.addEventListener("contextmenu", (e) =>{
+    e.preventDefault();
+})
+
+//filling canvas function & click event
 canvas.addEventListener('click', (e)=>{
     if(filling === true){
         drawing = false;
@@ -79,7 +100,6 @@ if(mode){
         } else{
             filling = true;
             mode.innerHTML ='<i class="fas fa-pencil-alt"></i> Draw';
-           
         }
         
     })
