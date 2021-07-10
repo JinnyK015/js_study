@@ -1,7 +1,7 @@
 # js-paint
  HTML_canva prcatice
  
- <img src="intro.png">
+ <img src="intro.PNG">
 <ul>
  <li>drawing size change</li>
  <li>color change with pallete</li>
