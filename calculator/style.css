@@ -61,7 +61,7 @@ section {
 .calculate__btn .button:hover {
   background-color: rgb(60, 60, 60);
   color: white;
-  transition: color 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 .calculate__btn .button:active {
   color: white;
@@ -74,7 +74,7 @@ section {
 
 .calculate__btn .equal {
   grid-column: span 2;
-  background-color: rgb(120, 120, 120);
+  background-color: rgb(100, 100, 100);
 }
 .calculate__btn .clearAll,
 .calculate__btn .clearPast,
