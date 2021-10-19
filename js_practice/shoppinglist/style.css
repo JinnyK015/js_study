@@ -1,0 +1,55 @@
+html {
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:ivory;
+}
+main {
+    background-color: white;
+    width:300px;
+    height: 500px;
+    display: block;
+    position: relative;
+
+}
+nav{
+    text-align: center;
+}
+
+
+input {
+    outline: none;
+    border: none;
+    background: rgba(0,0,0,.1);
+    width: 90%;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+input:placeholder-shown{
+    text-align: center;
+    font-weight: 700;
+    text-align: center;
+
+}
+.shoppinglist {
+    height: 75%;
+}
+
+.enter {
+    outline :none;
+    border: none;
+    width :100%;
+    background-color: wheat;
+    border-radius: 5px;
+    font-weight: 700;
+    position: absolute;
+    bottom:10px;
+
+    
+}

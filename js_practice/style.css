@@ -1,0 +1,26 @@
+.day1 {
+    color: white;
+    background-color:yellowgreen;
+    font-weight: bold;
+    font-size: 32px;
+
+}
+
+.box_day2 {
+    width: 200px;
+    height: 200px;
+    background-color: thistle;
+    margin: 5px;
+}
+.cake {
+    background-color: palevioletred;
+}
+
+.scroll {
+  position: fixed;
+ 
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+
+}
